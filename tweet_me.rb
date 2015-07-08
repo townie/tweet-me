@@ -1,6 +1,7 @@
 require 'dotenv'
-class Api
+require 'twitter'
 
+class Api
     def self.financial_users
       users = %w(
           Chase
@@ -22,7 +23,7 @@ class Api
     end
 
     def client
-      current ||= Twitter::REST::Client.new do |config|
+      current ||= ::Twitter::REST::Client.new do |config|
         config.consumer_key        = ENV['CONSUMER_KEY']
         config.consumer_secret     = ENV['CONSUMER_SECRET']
         config.access_token        = ENV['ACCESS_TOKEN']
@@ -59,12 +60,13 @@ class Api
         begin
           client.user_timeline(user, options)
         rescue => e
-          sleep(5.minutes) if e.is_a? Twitter::Error::TooManyRequests
+          sleep(5.minutes) if e.is_a? ::Twitter::Error::TooManyRequests
           retry unless count <= 0
           count -= 1
         end
       end
     end
 end
+
 api = Api.new
 api.get_all_tweets(Api.financial_users)
