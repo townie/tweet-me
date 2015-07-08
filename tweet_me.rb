@@ -2,7 +2,6 @@ require 'dotenv'
 require 'twitter'
 
 class Api
-
     def self.financial_users
       users = %w(
           Chase
@@ -20,6 +19,7 @@ class Api
           RBSGroup
           Citi
           UBS
+          RBS_PressOffice
         )
     end
 
@@ -34,7 +34,11 @@ class Api
 
     def build_set_of_users_history(users, output= "/tmp/tweet_history_#{Time.now.to_i}.csv")
       users.each do |user|
-        build_user_history(user, output)
+	puts "#{Time.now} - start #{user}"
+        
+	build_user_history(user, output)
+        
+	puts "#{Time.now} - finished #{user}"
       end
     end
 
@@ -68,5 +72,6 @@ class Api
       end
     end
 end
+
 api = Api.new
 api.get_all_tweets(Api.financial_users)
