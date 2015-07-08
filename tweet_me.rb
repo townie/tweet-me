@@ -19,6 +19,7 @@ class Api
           RBSGroup
           Citi
           UBS
+          RBS_PressOffice
         )
     end
 
