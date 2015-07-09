@@ -49,7 +49,7 @@ class Api
       data = get_all_tweets(user)
       ::CSV.open(output, "a+") do |csv|
         data.each do |tweet|
-          csv << [tweet.text] unless tweet.retweet?
+          csv << ["#{user}:  ", tweet.text] unless tweet.retweet?
         end
       end
     end
