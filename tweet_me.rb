@@ -1,6 +1,7 @@
 require 'dotenv'
 require 'twitter'
 require 'csv'
+require_relative 'funny_comedians'
 
 class Api
     def self.financial_users
@@ -25,7 +26,7 @@ class Api
     end
 
     def client
-      Dotenv.load	      
+      Dotenv.load
       current ||= ::Twitter::REST::Client.new do |config|
         config.consumer_key        = ENV['CONSUMER_KEY']
         config.consumer_secret     = ENV['CONSUMER_SECRET']
@@ -36,11 +37,11 @@ class Api
 
     def build_set_of_users_history(users, output= "/tmp/tweet_history_#{Time.now.to_i}.csv")
       users.each do |user|
-	puts "#{Time.now} - start #{user}"
-        
-	build_user_history(user, output)
-        
-	puts "#{Time.now} - finished #{user}"
+      	puts "#{Time.now} - start #{user}"
+
+      	build_user_history(user, output)
+
+      	puts "#{Time.now} - finished #{user}"
       end
     end
 
@@ -68,8 +69,8 @@ class Api
           client.user_timeline(user, options)
         rescue => e
           sleep(5.minutes) if e.is_a? ::Twitter::Error::TooManyRequests
-	  count -= 1
-	  puts "retry count #{count} for #{user}"       
+      	  count -= 1
+      	  puts "retry count #{count} for #{user}"
           retry unless count <= 0
         end
       end

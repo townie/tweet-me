@@ -1,0 +1,57 @@
+class FunnyComedians
+  def self.handles
+    user_handles = %W(
+      SteveMartinToGo
+      JimNorton
+      RonFunches
+      rickygervais
+      chrisrock
+      michelleisawolf
+      maxsilvestri
+      hodgman
+      birbigs
+      chelseahandler
+      sbellelauren
+      theNuzzy
+      mulaney
+      thejoshpatten
+      NeilHamburger
+      fart
+      paulscheer
+      JimGaffigan
+      robcorddry
+      toddbarry
+      AnaGasteyer
+      StephenAtHome
+      scullymike
+      natashaleggero
+      DougStanhope
+      ChelseaVPeretti
+      jimmycarr
+      amyschumer
+      robhuebel
+      unfoRETTAble
+      michaelianblack
+      kellyoxford
+      EugeneMirman
+      SarahKSilverman
+      kumailn
+      kristenschaaled
+      ConanOBrien
+      PFTompkins
+      rejectedjokes
+      meganamram
+      pattonoswalda
+      perlapell
+      JennyJohnsonHi5
+      azizansari
+      TheJamieLee
+      twittels
+      mindykaling
+      thesulk
+      JoeMande
+      robdelaney
+    )
+  end
+end
+
